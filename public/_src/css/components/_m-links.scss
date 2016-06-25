@@ -1,0 +1,79 @@
+@mixin m-links() {
+  a {
+    color  : $crimson-red;
+    cursor : pointer;
+
+    img {
+      border : none;
+    }
+
+    &:hover {
+      img {
+        //box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+
+  a:hover, a:active {
+    outline         : 0;
+    color           : $crimson-red;
+    text-decoration : underline;
+  }
+
+  a.absolute_link {
+    position : absolute;
+    top      : 0;
+    left     : 0;
+    width    : 100%;
+    height   : 100%;
+    z-index  : 2;
+
+    &:hover, &:active {
+      outline         : 0;
+      color           : transparent;
+      text-decoration : none;
+    }
+  }
+
+  //a[target="_blank"]:after {
+  //    content: "\f08e";
+  //    padding-left: 3px;
+  //    font-family: FontAwesome;
+  //    font-size: 0.7em;
+  //    display: inline-block;
+  //    text-decoration: inherit;
+  //}
+
+  a[href$=".jpg"]:after, a[href$=".jpegg"]:after, a[href$=".png"]:after, a[href$=".gif"]:after {
+    content         : "\f1c5";
+    position        : relative;
+    top             : -0.2em;
+    padding-left    : 3px;
+    font-family     : FontAwesome;
+    font-size       : 0.7em;
+    display         : inline-block;
+    text-decoration : inherit;
+  }
+
+  a[href$=".pdf"]:after {
+    content         : "\f1c1";
+    position        : relative;
+    top             : -0.2em;
+    padding-left    : 3px;
+    font-family     : FontAwesome;
+    font-size       : 0.7em;
+    display         : inline-block;
+    text-decoration : inherit;
+  }
+
+  a[href$=".zip"]:after {
+    content         : "\f1c6";
+    position        : relative;
+    top             : -0.2em;
+    padding-left    : 3px;
+    font-family     : FontAwesome;
+    font-size       : 0.7em;
+    display         : inline-block;
+    text-decoration : inherit;
+  }
+}

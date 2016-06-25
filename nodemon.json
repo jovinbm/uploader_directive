@@ -1,0 +1,11 @@
+{
+  "ignore": [
+    "gulp/*",
+    "uploads/*",
+    "spec/*",
+    "_app/_test_functions/*",
+    "bower_components/*",
+    "node_modules/*",
+    "gulpfile.js"
+  ]
+}

@@ -1,0 +1,209 @@
+<html ng-app="app">
+
+<head>
+
+  <!--css-->
+  <link href="/bower_components/font-awesome/css/font-awesome.css"
+        rel="stylesheet">
+
+  <link href="/public/dist/css/vendor/globals.css"
+        rel="stylesheet">
+
+  <link href="/public/dist/css/index.css"
+        rel="stylesheet">
+
+  <title>Uploader Directive</title>
+</head>
+
+<body>
+<div class="page_holder">
+
+  <div class="cust_container"
+       ng-controller="MainController">
+
+    <h1 class="app_heading">This is a sample uploader</h1>
+
+    <div class="uploader_wrapper">
+
+      <div upload-widget
+           upload-widget-id="upload_widget_id"
+           control="control"
+           max-files="max_files"
+           min-files="min_files"
+           accept="accept"
+           support-multiple="support_multiple"
+           maximum-size-bytes="maximum_size_bytes"
+           minimum-size-bytes="minimum_size_bytes">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!--upload-widget-template-->
+<script type="text/ng-template"
+        id="upload_widget.tpl">
+
+  <div id="upload_widget">
+
+    <nav>
+      <div class="nav-links">
+        <ul class="normal">
+          <li>
+            <a>Upload photos</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="file_selection_errors">
+
+      <p>{{UploadWidget.data.error.text}}</p>
+
+    </div>
+
+    <form name="uploadForm">
+
+      <fieldset>
+
+        <div>
+
+          <button class="axp_button add_button"
+                  ngf-max-files="{{UploadWidget.config.max_files_selection}}"
+                  ngf-pattern="{{UploadWidget.config.accept}}"
+                  ngf-select="addFiles($files, $invalidFiles)"
+                  ngf-multiple="{{UploadWidget.config.support_multiple}}"
+                  accept="{{UploadWidget.config.accept}}"
+                  ngf-max-size="{{UploadWidget.config.maximum_size_bytes}}"
+                  ngf-min-size="{{UploadWidget.config.minimum_size_bytes}}">
+            Add images
+          </button>
+
+        </div>
+
+      </fieldset>
+
+    </form>
+
+    <div class="body">
+
+
+      <ul class="files">
+
+        <li ng-repeat="(key,f) in UploadWidget.files">
+
+          <ul class="file">
+
+            <li>
+
+              <input type="checkbox"
+                     ng-model="f.is_checked"
+                     ng-true-value="true"
+                     ng-false-value="false"
+                     ng-change="checkSelection()">
+
+            </li>
+
+            <li class="image">
+
+              <div class="image">
+
+                <img ngf-src="f">
+
+              </div>
+
+            </li>
+
+            <li class="name">
+
+              <span ng-show="!f.db_img">{{f.name}}</span>
+
+              <span ng-show="f.db_img">
+                <a ng-href="{{f.db_img.absolute_path}}"
+                   target="_blank">
+                  {{f.name}}
+                </a>
+              </span>
+            </li>
+
+            <li class="progress">
+
+              <div>
+                <div class="progress">
+                  <progress max="100"
+                            ng-attr-value="{{f.progress || 0}}">
+                  </progress>
+                  <p>{{f.progress || 0}}%</p>
+                </div>
+
+              </div>
+
+            </li>
+
+            <li class="error">
+
+              <p ng-show="f.is_errored">{{f.error.client_text || f.error.server_text}}</p>
+
+            </li>
+
+            <li class="actions">
+              <button class="axp_button"
+                      ng-click="removeFile(f)">
+                Remove
+              </button>
+            </li>
+
+            <li class="status">
+              <span class="success"
+                    ng-show="f.is_uploaded">
+                <i class="fa fa-check-square"
+                   aria-hidden="true"></i>
+              </span>
+              <span class="error"
+                    ng-show="f.is_errored">
+                <i class="fa fa-times"
+                   aria-hidden="true"></i>
+              </span>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="actions">
+
+
+      <button class="axp_button"
+              ng-click="done()">
+        Done
+      </button>
+
+      <button class="axp_button"
+              ng-click="minimize()">
+        Minimize
+      </button>
+
+      <button class="axp_button"
+              ng-click="cancel()">
+        Cancel
+      </button>
+
+
+    </div>
+
+  </div>
+
+</script>
+
+<!--JS-->
+<script src="/public/dist/js/vendor/globals.js"></script>
+<script src="/public/dist/js/index.js"></script>
+
+</body>
+
+</html>

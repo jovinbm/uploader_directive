@@ -1,0 +1,48 @@
+@mixin m-container() {
+  .cust_container {
+    margin-right  : auto;
+    margin-left   : auto;
+    padding-left  : 15px;
+    padding-right : 15px;
+
+    //media
+    //@media (max-width : $screen-xs-max) {
+    //    width : 100%;
+    //}
+
+    @media (min-width : $screen-sm-min) {
+      width : $container-sm;
+    }
+    @media (min-width : $screen-md-min) {
+      width : $container-md;
+    }
+    @media (min-width : $screen-lg-min) {
+      width : $container-lg;
+    }
+
+    // clearfixing
+    &:before,
+    &:after {
+      content : " "; // 1
+      display : table; // 2
+    }
+    &:after {
+      clear : both;
+    }
+  }
+
+  .cust_container_fluid {
+    padding-left  : 15px;
+    padding-right : 15px;
+
+    // clearfixing
+    &:before,
+    &:after {
+      content : " "; // 1
+      display : table; // 2
+    }
+    &:after {
+      clear : both;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import "components/main";
+// core styles
+@include m-html-body();
+@include m-container();
+@include m-headings();
+@include m-forms();
+@include m-img();
+@include m-links();
+@include m-angular();
+@include m-upload-widget();
+
+body {
+  padding-top : 30px;
+
+  .form-group {
+    margin-top    : 15px;
+    margin-bottom : 15px;
+  }
+
+  .page_holder {
+
+    > .cust_container {
+
+      > .app_heading {
+        font-family   : 'Gill Sans MT', 'Gill Sans', arial, helvetica, sans-serif;
+        margin-bottom : 15px;
+      }
+
+      > .uploader_wrapper {
+        //
+      }
+
+    }
+
+  }
+}

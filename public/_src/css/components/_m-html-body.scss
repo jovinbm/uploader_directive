@@ -1,0 +1,27 @@
+@mixin m-html-body() {
+  html {
+    // to prevent padding from increasing width of element
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing    : border-box;
+    box-sizing         : border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing : inherit;
+  }
+
+  body {
+    font-family      : arial, sans-serif;
+    position         : relative; // for reference, -mainFooter positioning
+    margin           : 0;
+    padding          : 0;
+    font-size        : 16px;
+    line-height      : 1.2;
+    background-color : white;
+    word-break       : break-word;
+    -webkit-hyphens  : auto;
+    -moz-hyphens     : auto;
+    -ms-hyphens      : auto;
+    hyphens          : auto;
+  }
+}
